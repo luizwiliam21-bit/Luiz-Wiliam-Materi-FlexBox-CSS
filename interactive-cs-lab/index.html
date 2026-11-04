@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive CS Lab — Dasar Pemrograman, Struktur Data & Algoritma Graf</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Navbar -->
+  <header class="sticky top-0 z-30 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-4 sm:px-6 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button type="button" id="btn-mobile-menu" class="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700" aria-label="Buka Menu">
+          ☰
+        </button>
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center font-mono font-bold text-white shadow">
+            &lt;/&gt;
+          </div>
+          <div>
+            <h1 class="text-sm sm:text-base font-bold text-white leading-tight">Interactive CS Lab</h1>
+            <p class="text-[11px] text-slate-400 hidden sm:block">Belajar Dasar Coding, Struktur Data & Traversal Graf secara Visual</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Tracker -->
+      <div class="flex items-center gap-3">
+        <div class="text-right hidden sm:block">
+          <div class="text-[11px] text-slate-400">Progress Eksplorasi</div>
+          <div id="progress-count-text" class="text-xs font-mono font-semibold text-indigo-300">1/11 Modul</div>
+        </div>
+        <div class="w-24 sm:w-36 h-2.5 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+          <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 transition-all duration-300" style="width: 9%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout Container -->
+  <div class="flex-1 max-w-7xl w-full mx-auto flex relative">
+    <!-- Backdrop untuk Mobile Sidebar -->
+    <div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-30 hidden lg:hidden"></div>
+
+    <!-- Sidebar Navigasi Modul -->
+    <aside id="app-sidebar"
+      class="fixed lg:static top-[61px] bottom-0 left-0 z-40 w-72 bg-slate-900 border-r border-slate-800 p-4 overflow-y-auto transition-transform duration-300 -translate-x-full lg:translate-x-0 shrink-0">
+      <div id="sidebar-nav-list"></div>
+    </aside>
+
+    <!-- Area Konten Modul Interaktif -->
+    <main class="flex-1 p-4 sm:p-6 lg:p-8 overflow-x-hidden flex flex-col justify-between">
+      <div id="module-content-area"></div>
+
+      <!-- Footer Navigasi Antar Modul -->
+      <footer class="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
+        <button type="button" id="btn-prev-module" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-medium transition">
+          ← Modul Sebelumnya
+        </button>
+        <span class="hidden sm:inline text-slate-500">Interactive CS Lab • Python & Computer Science Visualizer</span>
+        <button type="button" id="btn-next-module" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition">
+          Modul Berikutnya →
+        </button>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Global Non-Blocking Toast Notification -->
+  <div id="global-toast" style="opacity: 0; transform: translateY(12px); pointer-events: none;"></div>
+
+  <!-- Modul Script Terpisah -->
+  <script src="js/data/quizzes.js"></script>
+  <script src="js/utils/visualizer.js"></script>
+  <script src="js/modules/basics.js"></script>
+  <script src="js/modules/dataStructures.js"></script>
+  <script src="js/modules/graphs.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
